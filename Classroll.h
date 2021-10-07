@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <fstream>
+#include <iomanip>
 
 
 using namespace std;
@@ -25,9 +26,10 @@ public:
 	int getNoStudents() const { return noStudents; }
 	string getCourseName() const { return courseName; }
 	void changeGrade(string /*studentName*/, char /*studentGrade*/);
-	void writeStudent(ostream& /*output*/) const;
+	void writeStudents(ostream& /*output*/) const;
+	
 
-	Classroll(string /*fileName*/, int /*maxStudents*/);
+	Classroll(string /*fileName*/, int = 0 /*maxStudents*/);
 
 private:
 	string courseName;

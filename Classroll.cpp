@@ -11,7 +11,7 @@ Classroll::Classroll(string passedFile, int passedMaxStudents)
 
 	if (passedMaxStudents > SIZE || passedMaxStudents <= 0)
 	{
-		cout << "Error. invalid maximum students entered. Default set.";
+		cout << "Error. invalid maximum students entered. Default set." << endl;
 		maxStudents = SIZE;
 	}
 	else
@@ -19,7 +19,7 @@ Classroll::Classroll(string passedFile, int passedMaxStudents)
 		maxStudents = passedMaxStudents;
 	}
 
-	ifstream fin("student.data");
+	ifstream fin(passedFile);
 
 	if (!fin.is_open())
 	{
@@ -44,4 +44,25 @@ Classroll::Classroll(string passedFile, int passedMaxStudents)
 	noStudents = index;
 
 
+}
+
+void Classroll::writeStudents(ostream& output) const
+{
+	int length;
+	output << left << setw(20) << "Student Name"
+		<< right << setw(15) << "Assign Total"
+		<< setw(15) << "Test Total"
+		<< setw(5) << "Grade"
+		<< endl;
+
+	for (length = 0; length < noStudents; length++)
+	{
+		output << left << setw(20) << students[length].studentName
+			<< right << setw(15) << students[length].assignmentTotal
+			<< setw(15) << students[length].testTotal
+			<< setw(5) << students[length].letterGrade
+			<< endl;
+	}
+
+	output << "Number of students: " << length;
 }
